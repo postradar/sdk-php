@@ -1,0 +1,15 @@
+{
+    "name": "postradar/sdk-php",
+    "description": "sdk for postradar.ru api",
+    "require": {
+        "php": "5.6+",
+        "ext-curl": "*"
+    },
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "Anton Novopashin",
+            "email": "antonfromkrsk@gmail.com"
+        }
+    ]
+}
