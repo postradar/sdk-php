@@ -2,7 +2,7 @@
     "name": "postradar/sdk-php",
     "description": "sdk for postradar.ru api",
     "require": {
-        "php": "5.6+",
+        "php": ">=5.6",
         "ext-curl": "*"
     },
     "license": "GPL-3.0",
