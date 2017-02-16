@@ -21,9 +21,7 @@ class ApiResponse
         if (!empty($responseBody)) {
             $response = json_decode($responseBody, true);
             if (!$response && JSON_ERROR_NONE !== ($error = json_last_error())) {
-                throw new \HttpRequestException(
-                    "Invalid JSON in the API response body. Error code #$error"
-                );
+                echo "Invalid JSON in the API response body. Error code #$error";
             }
             $this->response = $response;
         }

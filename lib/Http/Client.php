@@ -15,9 +15,9 @@ class Client
 
     public function __construct($url, array $defaultParameters = array())
     {
-        if (false === stripos($url, 'https://')) {
+        if (false === stripos($url, 'http://')) {
             throw new \InvalidArgumentException(
-                'API schema requires HTTPS protocol'
+                'API schema requires HTTP protocol'
             );
         }
         $this->url = $url;
@@ -65,10 +65,15 @@ class Client
         $responseBody = curl_exec($curlHandler);
         $statusCode = curl_getinfo($curlHandler, CURLINFO_HTTP_CODE);
         $errno = curl_errno($curlHandler);
+        $error = curl_error($curlHandler);
         curl_close($curlHandler);
 
         if ($errno) {
             echo 'tut budet exception';
+            echo $responseBody . '<br>';
+            echo $statusCode . '<br>';
+            echo $errno . '<br>';
+            echo $error . '<br>';
         }
 
         return new ApiResponse($statusCode, $responseBody);
