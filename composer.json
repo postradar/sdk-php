@@ -8,6 +8,11 @@
     "version": "0.1.1",
     "minimum-stability": "dev",
     "license": "GPL-3.0",
+    "autoload": {
+        "psr-0" : {
+            "Postradar\\Api\\Sdk" : "src"
+        }
+    },
     "authors": [
         {
             "name": "Anton Novopashin",
