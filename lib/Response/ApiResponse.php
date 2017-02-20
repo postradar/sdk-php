@@ -125,4 +125,12 @@ class ApiResponse
         }
         return $this->response[$offset];
     }
+
+    /**
+     * @return string
+     */
+    public function getFullResponse()
+    {
+        return $this->response;
+    }
 }

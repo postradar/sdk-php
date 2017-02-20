@@ -26,8 +26,21 @@ class ApiClient
         $this->client = new Client($url, array('token' => $apiKey));
     }
 
+    /**
+     * @param array $params
+     * @return Response\ApiResponse
+     */
     public function getProfile($params = array())
     {
         return $this->client->makeRequest('profile', 'GET', $params);
+    }
+
+    /**
+     * @param array $params
+     * @return Response\ApiResponse
+     */
+    public function getAssembler($params = array())
+    {
+        return $this->client->makeRequest('settings/assembly/operators', 'GET', $params);
     }
 }
