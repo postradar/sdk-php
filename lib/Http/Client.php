@@ -60,6 +60,10 @@ class Client
         if (self::METHOD_POST === $method) {
             curl_setopt($curlHandler, CURLOPT_POST, true);
             curl_setopt($curlHandler, CURLOPT_POSTFIELDS, $parameters);
+            curl_setopt($curlHandler, CURLOPT_HTTPHEADER, array(
+                    'X-Api-Token: ' . $parameters['X-Api-Token'],
+                )
+            );
         }
 
         $responseBody = curl_exec($curlHandler);

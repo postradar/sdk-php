@@ -43,4 +43,26 @@ class ApiClient
     {
         return $this->client->makeRequest('settings/assembly/operators', 'GET', $params);
     }
+
+    /**
+     * Creating new assembler
+     *
+     * @param string $email
+     * @param string $phone
+     * @param string $name
+     * @param string $password
+     * @param array $tags
+     * @return Response\ApiResponse
+     */
+    public function addAssembler(string $email, string $phone, string $name, string $password, $tags)
+    {
+        $params = [];
+        $params['email'] = $email;
+        $params['phone'] = $phone;
+        $params['fullname'] = $name;
+        $params['password'] = $password;
+        $params['tags'] = json_encode($tags);
+
+        return $this->client->makeRequest('settings/assembly/operators', 'POST', $params);
+    }
 }
