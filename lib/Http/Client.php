@@ -9,6 +9,7 @@ class Client
 {
     const METHOD_GET = 'GET';
     const METHOD_POST = 'POST';
+    const METHOD_DELETE = 'DELETE';
 
     protected $url;
     protected $defaultParameters;
@@ -34,7 +35,7 @@ class Client
      * @return ApiResponse
      */
     public function makeRequest($path, $method, array $parameters = []) {
-        $allowedMethods = array(self::METHOD_GET, self::METHOD_POST);
+        $allowedMethods = array(self::METHOD_GET, self::METHOD_POST, self::METHOD_DELETE);
 
         if (!in_array($method, $allowedMethods, false)) {
             echo 'tut budet exception';
@@ -64,6 +65,16 @@ class Client
                     'X-Api-Token: ' . $parameters['X-Api-Token'],
                 )
             );
+        }
+
+        if (self::METHOD_DELETE === $method) {
+            curl_setopt($curlHandler, CURLOPT_HEADER, 0);
+            curl_setopt($curlHandler, CURLOPT_POSTFIELDS, $parameters);
+            curl_setopt($curlHandler, CURLOPT_HTTPHEADER, array(
+                    'X-Api-Token: ' . $parameters['X-Api-Token'],
+                )
+            );
+            curl_setopt($curlHandler, CURLOPT_CUSTOMREQUEST, "DELETE");
         }
 
         $responseBody = curl_exec($curlHandler);
