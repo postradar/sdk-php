@@ -66,15 +66,12 @@ class ApiClient
         return $this->client->makeRequest('settings/assembly/operators', 'POST', $params);
     }
 
-    public function deleteAssembler(string $email, string $phone, string $name, string $password, $tags)
+    /**
+     * @param string $id
+     * @return Response\ApiResponse
+     */
+    public function deleteAssembler(string $id)
     {
-        $params = [];
-        $params['email'] = $email;
-        $params['phone'] = $phone;
-        $params['fullname'] = $name;
-        $params['password'] = $password;
-        $params['tags'] = json_encode($tags);
-
-        return $this->client->makeRequest('settings/assembly/operators', 'DELETE', $params);
+        return $this->client->makeRequest('settings/assembly/operators/' . $id, 'DELETE', array());
     }
 }
