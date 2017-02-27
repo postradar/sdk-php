@@ -23,7 +23,7 @@ class ApiClient
             $url .= '/';
         }
 
-        $this->client = new Client($url, array('token' => $apiKey));
+        $this->client = new Client($url, array('X-Api-Token' => $apiKey));
     }
 
     /**
@@ -73,5 +73,30 @@ class ApiClient
     public function deleteAssembler(string $id)
     {
         return $this->client->makeRequest('settings/assembly/operators/' . $id, 'DELETE', array());
+    }
+
+    /**
+     * @param string $id
+     * @return Response\ApiResponse
+     */
+    public function showAssembler(string $id)
+    {
+        return $this->client->makeRequest('settings/assembly/operators/' . $id, 'GET', array());
+    }
+
+    /**
+     * @param string $id
+     * @return Response\ApiResponse
+     */
+    public function updateAssembler(string $id, string $email, string $phone, string $name, string $password, $tags)
+    {
+        $params = [];
+        $params['email'] = $email;
+        $params['phone'] = $phone;
+        $params['fullname'] = $name;
+        $params['password'] = $password;
+        $params['tags'] = json_encode($tags);
+
+        return $this->client->makeRequest('settings/assembly/operators/' . $id, 'PUT', $params);
     }
 }
