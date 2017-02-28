@@ -65,7 +65,7 @@ class Client
 
         if (self::METHOD_POST === $method) {
             curl_setopt($curlHandler, CURLOPT_POST, true);
-            curl_setopt($curlHandler, CURLOPT_POSTFIELDS, $parameters);
+            curl_setopt($curlHandler, CURLOPT_POSTFIELDS, http_build_query($parameters));
         }
 
         if (self::METHOD_PUT === $method) {
