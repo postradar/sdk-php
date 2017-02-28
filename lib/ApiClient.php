@@ -61,7 +61,7 @@ class ApiClient
         $params['phone'] = $phone;
         $params['fullname'] = $name;
         $params['password'] = $password;
-        $params['tags'] = json_encode($tags);
+        $params['tags'] = $tags;
 
         return $this->client->makeRequest('settings/assembly/operators', 'POST', $params);
     }
@@ -95,7 +95,7 @@ class ApiClient
         $params['phone'] = $phone;
         $params['fullname'] = $name;
         $params['password'] = $password;
-        $params['tags'] = json_encode($tags);
+        $params['tags'] = $tags;
 
         return $this->client->makeRequest('settings/assembly/operators/' . $id, 'PUT', $params);
     }
