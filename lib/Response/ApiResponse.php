@@ -5,14 +5,20 @@ namespace Postradar\Api\Sdk\Response;
 
 class ApiResponse
 {
+    /**
+     * @var int HTTP response statuse code
+     */
     protected $statusCode;
 
+    /**
+     * @var mixed HTTP response body. Result of curl_exec()
+     */
     protected $response;
 
     /**
      * ApiResponse constructor.
-     * @param $statusCode
-     * @param null $responseBody
+     * @param $statusCode HTTP response status code
+     * @param null $responseBody Result of curl_exec()
      * @throws \HttpRequestException
      */
     public function __construct($statusCode, $responseBody = null)
@@ -30,7 +36,7 @@ class ApiResponse
     /**
      * Return HTTP response status code
      *
-     * @return int
+     * @return int HTTP response status code
      */
     public function getStatusCode()
     {
@@ -64,6 +70,8 @@ class ApiResponse
     }
 
     /**
+     * Get the value of response element by element's name
+     *
      * @param $name
      * @return mixed
      */
@@ -76,7 +84,7 @@ class ApiResponse
     }
 
     /**
-     * Offset set
+     * Offset set. Set the value of response element by element's name
      *
      * @throws \BadMethodCallException
      * @return void
@@ -87,7 +95,7 @@ class ApiResponse
     }
 
     /**
-     * Offset unset
+     * Offset unset. Unset the value of response element by element's name
      *
      * @throws \BadMethodCallException
      * @return void
@@ -98,7 +106,7 @@ class ApiResponse
     }
 
     /**
-     * Check offset
+     * Check offset. Check if element with given name exists in response
      *
      * @param mixed $offset offset
      *
@@ -110,7 +118,7 @@ class ApiResponse
     }
 
     /**
-     * Get offset
+     * Get offset. Get the value of response element by element's name
      *
      * @param mixed $offset offset
      *
@@ -127,6 +135,8 @@ class ApiResponse
     }
 
     /**
+     * Returns full response body
+     *
      * @return string
      */
     public function getFullResponse()

@@ -7,16 +7,17 @@ use Postradar\Api\Sdk\Http\Client;
 class ApiClient
 {
     /**
+     * Instance of Http/Client.php class
+     *
      * @var Client
      */
     protected $client;
 
     /**
-     * @var array
+     * ApiClient constructor.
+     * @param $url
+     * @param $apiKey
      */
-    protected $params;
-
-
     public function __construct($url, $apiKey)
     {
         if ('/' !== $url[strlen($url) - 1]) {
@@ -27,6 +28,8 @@ class ApiClient
     }
 
     /**
+     * Getting profile info
+     *
      * @param array $params
      * @return Response\ApiResponse
      */
@@ -36,6 +39,8 @@ class ApiClient
     }
 
     /**
+     *Showing list of attached assembly operators
+     *
      * @param array $params
      * @return Response\ApiResponse
      */
@@ -45,7 +50,7 @@ class ApiClient
     }
 
     /**
-     * Creating new assembler
+     * Creating and ataching new assembly operator.
      *
      * @param string $email
      * @param string $phone
@@ -67,6 +72,8 @@ class ApiClient
     }
 
     /**
+     * Deleting assembly operator
+     *
      * @param string $id
      * @return Response\ApiResponse
      */
@@ -76,6 +83,8 @@ class ApiClient
     }
 
     /**
+     * Showing assembly operator information
+     *
      * @param string $id
      * @return Response\ApiResponse
      */
@@ -85,7 +94,14 @@ class ApiClient
     }
 
     /**
+     * Updating assembler information
+     *
      * @param string $id
+     * @param string $email
+     * @param string $phone
+     * @param string $name
+     * @param string $password
+     * @param $tags
      * @return Response\ApiResponse
      */
     public function updateAssembler(string $id, string $email, string $phone, string $name, string $password, $tags)
@@ -101,6 +117,8 @@ class ApiClient
     }
 
     /**
+     * Showing list of attached call-center operators
+     *
      * @return Response\ApiResponse
      */
     public function getListOfOperators()
@@ -109,7 +127,7 @@ class ApiClient
     }
 
     /**
-     * Creating new operator
+     * Creating new call-center operator
      *
      * @param string $email
      * @param string $phone
@@ -131,6 +149,8 @@ class ApiClient
     }
 
     /**
+     * Deleting call-center operator
+     *
      * @param string $id
      * @return Response\ApiResponse
      */
@@ -140,6 +160,8 @@ class ApiClient
     }
 
     /**
+     * Showing call-center operator info
+     *
      * @param string $id
      * @return Response\ApiResponse
      */
@@ -149,6 +171,8 @@ class ApiClient
     }
 
     /**
+     * Updating call-center operator info
+     *
      * @param string $id
      * @return Response\ApiResponse
      */
@@ -165,6 +189,8 @@ class ApiClient
     }
 
     /**
+     * Shoing list of owned shops
+     *
      * @param string $id
      * @return Response\ApiResponse
      */
@@ -174,6 +200,8 @@ class ApiClient
     }
 
     /**
+     * Creating and attaching shop
+     *
      * @param string $title
      * @param string $url
      * @return Response\ApiResponse
@@ -188,10 +216,9 @@ class ApiClient
     }
 
     /**
+     * Showing shop info
+     *
      * @param string $id
-     *
-     * /shops/{shopId}
-     *
      * @return Response\ApiResponse
      */
     public function getShop(string $id)
@@ -200,6 +227,8 @@ class ApiClient
     }
 
     /**
+     * Update shop info
+     *
      * @param string $id
      * @param string $title
      * @param string $url
@@ -215,6 +244,8 @@ class ApiClient
     }
 
     /**
+     * Deleting shop
+     *
      * @param string $id
      * @return Response\ApiResponse
      */
@@ -224,6 +255,8 @@ class ApiClient
     }
 
     /**
+     * Showing list of legals attached to shop
+     *
      * @param string $id
      * @return Response\ApiResponse
      */
@@ -233,13 +266,15 @@ class ApiClient
     }
 
     /**
-     * @param string $id shop id
+     * Creating and attaching legal
+     *
+     * @param string $id
      * @param string $name
-     * @param string $inn length = 10 || 12
+     * @param string $inn
      * @param string $bik
      * @param string $bank
-     * @param string $corrAccount length = 20
-     * @param string $finAccount length = 20
+     * @param string $corrAccount
+     * @param string $finAccount
      * @param string $address
      * @return Response\ApiResponse
      */
@@ -258,6 +293,8 @@ class ApiClient
     }
 
     /**
+     * Showing legal info
+     *
      * @param string $id
      * @param string $legalId
      * @return Response\ApiResponse
@@ -268,6 +305,8 @@ class ApiClient
     }
 
     /**
+     * Update legal info
+     *
      * @param string $id
      * @param string $legalId
      * @param string $name
@@ -294,6 +333,8 @@ class ApiClient
     }
 
     /**
+     * Deleting legal
+     *
      * @param string $id
      * @param string $legalId
      * @return Response\ApiResponse

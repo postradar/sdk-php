@@ -1,11 +1,11 @@
 {
-    "name": "postradar/sdk-php",
-    "description": "sdk for postradar.ru api",
+    "name": "postradar/api-sdk",
+    "description": "postradar.ru API client",
     "require": {
         "php": ">=5.6",
         "ext-curl": "*"
     },
-    "version": "0.1.1",
+    "version": "1.0.0",
     "minimum-stability": "dev",
     "license": "GPL-3.0",
     "autoload": {

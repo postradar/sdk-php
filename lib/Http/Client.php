@@ -12,9 +12,26 @@ class Client
     const METHOD_DELETE = 'DELETE';
     const METHOD_PUT = 'PUT';
 
+    /**
+     * Base URL. "http://postradar.ru" for example
+     *
+     * @var
+     */
     protected $url;
+
+    /**
+     * Default parameters. Being seted at apiClient object creating. Api token for example
+     *
+     * @var array
+     */
     protected $defaultParameters;
 
+    /**
+     * Client constructor.
+     *
+     * @param $url
+     * @param array $defaultParameters
+     */
     public function __construct($url, array $defaultParameters = array())
     {
         if (false === stripos($url, 'http://')) {
@@ -27,10 +44,10 @@ class Client
     }
 
     /**
-     * Make HTTP request
+     * Make HTTP request using curl
      *
      * @param string $path       request url
-     * @param string $method     (default: 'GET')
+     * @param string $method     HTTP method (GET/POST/PUT...)
      * @param array  $parameters (default: array())
      *
      * @return ApiResponse
@@ -39,7 +56,9 @@ class Client
         $allowedMethods = array(self::METHOD_GET, self::METHOD_POST, self::METHOD_DELETE, self::METHOD_PUT);
 
         if (!in_array($method, $allowedMethods, false)) {
-            echo 'tut budet exception';
+            throw new \HttpException(
+                'Method not allowed'
+            );
         }
 
         $parameters = array_merge($this->defaultParameters, $parameters);
@@ -89,11 +108,7 @@ class Client
         curl_close($curlHandler);
 
         if ($errno) {
-            echo 'tut budet exception';
-            echo $responseBody . '<br>';
-            echo $statusCode . '<br>';
-            echo $errno . '<br>';
-            echo $error . '<br>';
+            throw new \InvalidArgumentException("curl error #$errno");
         }
 
         return new ApiResponse($statusCode, $responseBody);
