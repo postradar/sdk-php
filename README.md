@@ -13,37 +13,14 @@ php ( >=5.6 ), curl
 
 ### Installing
 
-1. Add sdk repository to the composer.json file of your project. 
-
-url - https://github.com/postradar/sdk-php 
-
-type - vcs
+1. Run composer require command in command line in project directory
 
 ```
- "repositories": [
-        {
-            "url": "https://github.com/postradar/sdk-php",
-            "type": "vcs"
-        }
-    ],
-```
-
-2. Add postradar/api-sdk package to the require section of composer.json file
-
-```
-"require": {
-        "postradar/php-sdk": "dev-master",
-    },
-```
-
-3. Run composer update command in command line in project directory
-
-```
-~/your/project/directory$ composer update
+~/your/project/directory$ composer require postradar/php-sdk dev-master
 
 ```
 
-4. Clear cache of your application
+2. Clear cache of your application
 
 
 ## Using
