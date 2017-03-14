@@ -32,7 +32,7 @@ type - vcs
 
 ```
 "require": {
-        "postradar/api-sdk": "dev-master",
+        "postradar/php-sdk": "dev-master",
     },
 ```
 

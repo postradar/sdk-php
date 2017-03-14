@@ -1,5 +1,5 @@
 {
-    "name": "postradar/api-sdk",
+    "name": "postradar/php-sdk",
     "description": "postradar.ru API client",
     "require": {
         "php": ">=5.6",
