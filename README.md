@@ -29,7 +29,7 @@ php ( >=5.6 ), curl
 
 2. Create instance of ApiClient with url http://postradar.ru and your api key
 ```
-$client = new new \PostRadar\ApiClient($apiKey);
+$client = new \PostRadar\ApiClient($apiKey);
 
 ```
 3. Call ApiClient object methods
