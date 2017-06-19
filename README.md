@@ -25,38 +25,18 @@ php ( >=5.6 ), curl
 
 ## Using
 
-1. Get api key in postradar.ru cabinet
+1. Get apiKey in https://office.postradar.ru
 
 2. Create instance of ApiClient with url http://postradar.ru and your api key
 ```
-$postradarApiClient = new ApiClient('http://postradar.ru', $apiKey);
+$client = new new \PostRadar\ApiClient($apiKey);
 
 ```
 3. Call ApiClient object methods
 ```
-$result = $postradarApiClient->getProfile();
+$result = $client->profile();
 
 ```
-```
-$result = $postradarApiClient->getAssembler();
-
-```
-4. Call ApiResponse class object (result of ApiClient) methods to get the data from postradar.ru API
-```
-$result->getFullResponse()
-
-```
-
-
-## Contributing
-
-Don't push to the master branch
-
-## Authors
-
-* **Anton Novopashin** - *Initial work* - [antonnovopashin](https://github.com/antonnovopashin)
-
-See also the list of [contributors](https://github.com/postradar/sdk-php/graphs/contributors) who participated in this project.
 
 ## License
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Postradar\Api\Sdk\Response;
+namespace PostRadar\Response;
 
 
 class ApiResponse
@@ -142,5 +142,10 @@ class ApiResponse
     public function getFullResponse()
     {
         return $this->response;
+    }
+
+    public function getError()
+    {
+        return isset($this->response['error']) ? $this->response['error'] : null;
     }
 }
