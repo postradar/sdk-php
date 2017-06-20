@@ -203,6 +203,12 @@ class Entity implements \ArrayAccess
         return true;
     }
 
+    public function setPath($path)
+    {
+        $this->args = [];
+        static::$path = $path;
+    }
+
     public function fetch($prePath = null)
     {
         $path = $this->getPath();
@@ -215,6 +221,7 @@ class Entity implements \ArrayAccess
         $this->entityData = $response->isSuccessful()
             ? $response->getFullResponse()
             : ['error' => $response->getError()];
+        $this->setPath($path);
 
         if (
             array_key_exists('items', $this->entityData) &&

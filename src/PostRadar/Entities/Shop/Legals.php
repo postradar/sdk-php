@@ -34,4 +34,15 @@ class Legals extends Entity
 
         return parent::_create($params);
     }
+
+    public function getPath(array $pathParams = [])
+    {
+        $path = parent::getPath($pathParams);
+
+        if (isset($pathParams['fromEntity'])) {
+            var_dump($path, $pathParams['fromEntity']);die;
+        }
+
+        return $path;
+    }
 }
