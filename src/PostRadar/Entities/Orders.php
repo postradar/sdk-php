@@ -15,6 +15,7 @@ class Orders extends Entity
      * @param string $phone
      * @param array $client
      * @param string $address
+     * @param string $externalId
      * @param string $deliveryKey
      * @param int $priceInsurance
      * @param int $pricePay
@@ -29,6 +30,7 @@ class Orders extends Entity
         $phone,
         $client = null,
         $address,
+        $externalId = null,
         $deliveryKey = null,
         $priceInsurance = null,
         $pricePay = null
@@ -40,6 +42,7 @@ class Orders extends Entity
             'client' => $client,
             'address' => $address ? ['origin' => $address] : null,
             'delivery_key' => $deliveryKey,
+            'external_id' => $externalId,
             'price_insurance' => $priceInsurance,
             'price_pay' => $pricePay
         ];
